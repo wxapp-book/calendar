@@ -1,0 +1,38 @@
+.page{
+	background-color: white;
+	font-size:16px;
+}
+.page .header{
+	position:fixed;
+	top:0px;
+	display:flex;
+	width:100%;
+}
+.border-t{
+	border-top:1px solid #ddd;
+}
+.border-l{
+	border-left:1px solid #ddd;
+}
+.border-r{
+	border-right:1px solid #ddd;
+}
+.border-b{
+	border-bottom:1px solid #ddd;
+}
+.color_b_red{
+	background-color: #F45c93
+}
+.color_b_pink{
+	background-color: #A82f5a
+}
+.color_b_yellow{
+	background-color:#F6eb77;
+}
+.color_b_blue{
+	background-color:#ABE0FF;
+}
+.color_b_green{
+	background-color: #2DB3A0
+}
+

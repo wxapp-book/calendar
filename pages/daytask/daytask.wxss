@@ -1,0 +1,137 @@
+@import "../../common/css/common.wxss";
+.daytask .header{
+	justify-content: space-between;
+	height:88rpx;
+	align-items: center;
+	background-color:white;
+}
+.daytask .dayTask-table{
+	display:flex;
+}
+.daytask .taskTable-block{
+	height:100rpx;
+}
+.daytask .timeline-block{
+	border-top:1px solid transparent;
+}
+.daytask .plus{
+	width:40rpx;
+	height:40rpx;
+	background-image:url(https://cdn4.iconfinder.com/data/icons/mayssam/512/plus-128.png);
+	background-size: 100% 100%
+}
+.daytask .header .header-left{
+	width:40rpx;
+	margin-left:20rpx;
+}
+.daytask .header .header-right{
+	margin-right:20rpx;
+}
+.daytask .daytask_body{
+	padding-top:100rpx;
+}
+.daytask .dayTaskWrapper{
+	display:flex;
+	flex-grow: 1;
+	padding-top: 20rpx;
+}
+.daytask .task-block{
+	display:flex;
+	border-top:1px #A82f5a solid;
+}
+.daytask .task-block .task.start{
+	height:100%;
+	align-self: flex-end;
+}
+.daytask .task-block .task{
+	height:100%;
+	width:100%;
+}
+.daytask .task-column{
+	flex-grow:1;
+	display:flex;
+	flex-direction: column;
+}
+.daytask .task-block .important_2{
+	border-left: 1px solid white;
+	background-color:#F45c93;
+}
+.daytask .task-block .important_1{
+	border-left: 1px solid white;
+	background-color:#2DB3A0;
+}
+.daytask .calendar{
+	display:flex;
+	justify-content:space-between;
+	width:100%;
+}
+.daytask .calendar .cal-itme{
+	margin-left:20rpx;
+	border-radius:50%;
+	width: 70rpx;
+	height:70rpx;
+	line-height:70rpx;
+	text-align:center;
+}
+.daytask .calendar .cal-itme.select{
+	background-color: #A82f5a;
+	color:white;
+}
+.taskDetail{
+	position:fixed;
+	height:400rpx;
+	width:710rpx;
+	padding:20rpx;
+	background-color: #f0f0f0;
+	border-radius:20rpx 20rpx 0 0;
+	display: none;
+	opacity: 0.95
+}
+.taskDetail .taskDetailWrapper{
+	position:fixed;
+	display:flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width:710rpx;
+	height:400rpx;
+}
+.taskDetail .btn{
+	height : 60rpx;
+	line-height: 60rpx;
+	border: 1px solid #2DB3A0;
+	text-align:center;
+	width:100%;
+}
+.taskDetail .updateBtn{
+	/*align-self:center;*/
+
+}
+.taskDetail .finishBtn{
+	/*align-self:center;*/
+}
+.taskDetail .finishBtn.pending,
+.taskDetail .finishBtn.finish{
+	display:none;
+	/*align-self:center;*/
+}
+.taskDetail.show{
+	animation:showTask 0.2s;
+	bottom:0px;
+	display: block;
+}
+.taskDetail.hide{
+	animation:hideTask 1.2s;
+	/*bottom:-410rpx;*/
+	/*display: none;*/
+}
+@keyframes showTask{
+	from{bottom:-410rpx;}
+	to{bottom:0px;}
+}
+@keyframes hideTask{
+	from{bottom:0px;}
+	to{bottom:-410rpx;}
+}
+.daytask .header-center{
+	width:650rpx;
+}

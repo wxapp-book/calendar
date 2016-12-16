@@ -1,0 +1,131 @@
+/**index.wxss**/
+@import "../../common/css/common.wxss";
+.index .header{
+	justify-content: space-between;
+	height:44px;
+	align-items: center;
+	background-color:white;
+}
+.index .plus{
+	width:20px;
+	height:20px;
+	background-image:url(https://cdn4.iconfinder.com/data/icons/mayssam/512/plus-128.png);
+	background-size: 100% 100%
+}
+.index .header .header-left{
+	width:20px;
+	margin-left:10px;
+}
+.index .header .header-right{
+	margin-right:10px;
+}
+.index .index_body{
+	padding-top:44px;
+}
+.index .task-block{
+	display:flex;
+	align-items: center;
+	height:35px;
+	background-color: white;
+	justify-content: space-between;
+}
+.index .task-group{
+	border:1px solid #ddd;
+	margin:10px 10px;
+	box-shadow: 2px 2px #f0f0f0;
+	padding:0px 5px;
+}
+.index .current.task-group,
+.index .current .task-block{
+	border-color: #2DB3A0;
+}
+.index .finish{
+	color:#7c7e80;
+}
+.index .calendar .week{
+	display:flex;
+}
+.index .calendar .date{
+	display:flex;
+	flex-wrap:wrap;
+}
+.index .calendar .days{
+	width:107rpx;
+	text-align: center;
+}
+.index .calendar .week .days{
+	font-size:14px;
+	height:50px;
+	line-height:50px;
+}
+.index .calendar .date .days{
+	font-size:19px;
+	height:44px;
+	line-height:44px;
+}
+.index .calendar .date .days.hidden{
+	font-size:0px;
+
+}
+.index .calendar .days.weekend{
+	color:#F45c93;
+}
+.index .calendar .days.today{
+	
+}
+.index .calendar .days .date-inner{
+	border:2px solid transparent
+}
+.index .calendar .days.today .date-inner{
+	border-color: #f0f0f0;
+	border-radius:10px;
+}
+.index .calendar .days.select .date-inner{
+	border:2px solid #F45c93;
+	border-radius:10px;
+}
+.index .calendar .days.today.select .date-inner{
+	background-color:#F45c93;
+	color:white;
+}
+.index .calendar .days .date-inner{
+	height: 38px;
+	line-height: 38px;
+	width:96rpx;
+	margin: auto;
+}
+.index .todayWrapper{
+	display:flex;
+	padding: 30rpx;
+	border:1px solid  #2DB3A0;
+	border-radius:4px;
+	margin:10px 10px;
+	justify-content: space-between;
+
+}
+.index .todayWrapper .date{
+	font-size: 40px;
+	font-weight:bolder;
+	color:#F45c93;
+
+}
+.index .todayWrapper .left{
+	display:flex;
+}
+.index .todayWrapper .center{
+	display:flex;
+	flex-direction: column;
+	padding-left: 40rpx;
+	justify-content:center;
+
+}
+.index .todayWrapper .weekDay{
+
+}
+.index .todayWrapper .month{
+
+}
+.index .goDayTaskBtn{
+	font-size : 13px;
+	color:#F45c93;
+}

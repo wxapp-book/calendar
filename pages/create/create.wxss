@@ -1,0 +1,50 @@
+@import "../../common/css/common.wxss";
+
+.create .header{
+	justify-content: space-between;
+	height:44px;
+}
+.create .create_body{
+	margin-top:44px;
+	padding-top:1px;
+}
+.create .create_body .block{
+	margin-top:30px;
+	background-color:white;
+}
+.create .create_body .block_line{
+	display:flex;
+	background-color:white;
+	margin-left:20px;
+	padding:5px 0px;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 30px;
+	padding-right: 10px;
+
+}
+.create .header-btn{
+	height:44px;
+	line-height:44px;
+}
+.create .header-center{
+	font-size:17px;
+	font-weight: bolder;
+}
+.create .header-left{
+	font-size:16px;
+	padding-left:10px;
+	color:#A82f5a;
+}
+.create .header-right{
+	font-size:16px;
+	font-weight: bolder;
+	padding-right:10px;
+	color:#2DB3A0;
+}
+.create .header-right.inActive{
+	color:#f0f0f0;
+}
+.create .textarea{
+	height:60px;
+}

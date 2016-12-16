@@ -1,0 +1,48 @@
+<view class="create page">
+	<view class="header  border-t border-b ">
+		<view class="header-left header-btn" bindtap="cancelTask">取消</view>
+		<view class="header-center header-btn">新建任务</view>
+		<block wx:if="{{pageType=='create'}}">
+			<view class="header-right header-btn {{addBtnStatus}}" bindtap="saveTask" >添加</view>
+		</block>
+		<block wx:elif="{{pageType=='update'}}">
+			<view class="header-right header-btn {{addBtnStatus}}" bindtap="updateTask" data-taskkey="{{task.key}}">修改</view>
+		</block>
+	</view>
+
+	<view class="create_body">
+		<view class="block border-t border-b">
+			<view class="title block_line">
+				<input placeholder="标题:最多15个字" type="text" bindinput="onChangeTitle" maxlength="15" value="{{task.title}}"/>
+			</view>
+			<view class="block_line border-t">
+				<text>优先级</text>
+				<picker mode="selector" range="{{taskImportant}}" bindchange="onChangeImportant">
+					<view class="picker">{{task.important}}</view>
+				</picker>
+			</view>
+		</view>
+		<view class="block border-t border-b">
+			<view class="all-day  block_line border-b">
+				<text>全天</text>
+				<switch bindchange="onChangeAllDay"></switch>
+			</view>
+			<view class="start  block_line border-b">
+				<text>开始</text>
+				<picker mode="time" value="{{taskTime.startTime}}" start="{{taskTime.startTimeBeginLimit}}" end="24:59" bindchange="onChangeStartTime">
+				    <view class="picker">
+				      {{taskTime.date}} {{taskTime.startTime}}
+				    </view>
+				</picker>
+			</view>
+			<view class="end  block_line ">
+				<text>结束</text>
+				<picker mode="time" value="{{taskTime.endTime}}" start="{{taskTime.endTimeBeginLimit}}" end="24.59" bindchange="onChangeEndTime">
+				    <view class="picker">
+				      {{taskTime.date}} {{taskTime.endTime}}
+				    </view>
+				</picker>
+			</view>
+		</view>
+	</view>
+</view>
