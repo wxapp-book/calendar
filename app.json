@@ -7,7 +7,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "小助手",
+    "navigationBarTitleText": "日程表",
     "navigationBarTextStyle":"black"
   }
 }

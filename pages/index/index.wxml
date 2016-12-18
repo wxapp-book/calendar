@@ -1,79 +1,79 @@
 <!--index.wxml-->
 <view class="index page">
   <view class="header border-t border-b">
-  	<view class="header-left header-btn" bindtap="cancelTask"></view>
-	<view class="header-center header-btn"></view>
-	<view class="header-right plus" bindtap="addTask"></view>
+    <view class="header-left header-btn" bindtap="cancelTask"></view>
+  <view class="header-center header-btn"></view>
+  <view class="header-right plus" bindtap="addTask"></view>
   </view>
   <view class="index_body">
-  	<view class="todayWrapper"  >
-	  		<view class="left">
-		  		<view class="date">{{selectDate.date}}</view>
-		  		<view class="center">
-			  		<view class="weekDay">星期{{selectDate.weekDay}}</view>
-			  		<view class="month">{{selectDate.month}}月</view>
-		  		</view>
-	  		</view>
-	  		<view class="right">
-	  			<view class="goDayTaskBtn" bindtap="goDayTask" data-ms="{{selectDate.ms}}">日程表</view>
-	  		</view>
-	  </view>
-	  <view class="calendar">
-	  	<view class="week">
-	  		<block wx:for="{{days}}" wx:for-index="dayIdx" wx:for-item="dayItem">
-	  			<view class="days {{dayIdx==0||dayIdx==6?'weekend':''}}">
-	  				{{dayItem}}
-	  			</view>
-	  		</block>
-	  	</view>
-	  	<view class="date">
-	  		<block wx:for="{{calendar}}" wx:key="{{key}}" wx:for-index="weekIdx" wx:for-item="weekItem">
-	  			<block wx:for="{{weekItem.weeks}}" wx:key="{{key}}" wx:for-index="dayIdx" wx:for-item="dayItem	">
-	  				<view class="days {{weekItem.month!==weekItem.weeks[dayIdx].month?'hidden':''}} {{weekItem.weeks[dayIdx].weekDay==0||weekItem.weeks[dayIdx].weekDay==6?'weekend':''}} {{weekItem.weeks[dayIdx].isToday?'today':''}} {{weekItem.weeks[dayIdx].isSelect?'select':''}}"  data-weekIdx="{{weekIdx}}" data-daysIdx="{{dayIdx}}" bindtap="selectDate">
-	  					<view class="date-inner">
-	  					 {{weekItem.weeks[dayIdx].date}} 
-	  					</view>
-	  				</view>
-	  			</block>
-	  		</block>
-	  	</view>
-	  </view>
-	  <view class="taskList">
-	  		<!--正在进行的-->
-	  		<block wx:if="{{groupTask.curList.length>0}}">
-			  	<view class="current task-group">
-			  		<block wx:for="{{groupTask.curList}}" wx:key="key" wx:for-index="taskIdx" wx:for-item="taskItem">
-				  		<view data-status="current" data-key="{{taskItem.key}}" bindtap="selectTask" class="task-block {{taskIdx < groupTask.curList.length-1?'border-b':''}}">
-				  			<view class="end-time {{taskItem.endTimeMs*1>now?'dangerous:''}}">结束{{taskItem.endTime}}</view>
-				  			<view class="title">{{taskItem.title}}</view>
-				  			<view class="important {{taskItem.important==='一般'?'important_0':'important_1'}}">{{taskItem.important}}</view>
-				  		</view>
-			  		</block>
-			  	</view>
-		  	</block>
-		  	<!--未开始的-->
-		  	<block wx:if="{{groupTask.penList.length>0}}">
-			  	<view class="pending task-group">
-			  		<block wx:for="{{groupTask.penList}}" wx:key="key" wx:for-index="taskIdx" wx:for-item="taskItem">
-				  		<view data-status="pending" data-key="{{taskItem.key}}" bindtap="selectTask" class="task-block {{taskIdx < groupTask.penList.length-1?'border-b':''}}">
-				  			<view class="start-time">开始{{taskItem.startTime}}</view>
-				  			<view class="title">{{taskItem.title}}</view>
-				  			<view class="important {{taskItem.important==='一般'?'important_0':'important_1'}}">{{taskItem.important}}</view>
-				  		</view>
-			  		</block>
-			  	</view>
-		  	</block>
-		  	<!--已经结束的-->
-	  		<block wx:if="{{groupTask.finList.length>0}}">
-			  	<view class="finish task-group">
-					  	<block wx:for="{{groupTask.finList}}" wx:key="key" wx:for-index="taskIdx" wx:for-item="taskItem">
-					  		<view data-status="finish" data-key="taskItem.key" class="task-block {{taskIdx < groupTask.finList.length-1?'border-b':''}}">
-					  			<view class="title">{{taskItem.title}}</view>
-					  			<view class="important {{taskItem.important==='一般'?'important_0':'important_1'}}">{{taskItem.important}}</view>
-					  		</view>
-				  		</block>
-			  	</view>
-	  		</block>
-	  </view>
+    <view class="todayWrapper"  >
+        <view class="left">
+          <view class="date">{{selectDate.date}}</view>
+          <view class="center">
+            <view class="weekDay">星期{{days[selectDate.weekDay]}}</view>
+            <view class="month">{{selectDate.month}}月</view>
+          </view>
+        </view>
+        <view class="right">
+          <view class="goDayTaskBtn" bindtap="goDayTask" data-ms="{{selectDate.ms}}">日程表</view>
+        </view>
+    </view>
+    <view class="calendar">
+      <view class="week">
+        <block wx:for="{{days}}" wx:for-index="dayIdx" wx:for-item="dayItem">
+          <view class="days {{dayIdx==0||dayIdx==6?'weekend':''}}">
+            {{dayItem}}
+          </view>
+        </block>
+      </view>
+      <view class="date">
+        <block wx:for="{{calendar}}" wx:key="{{key}}" wx:for-index="weekIdx" wx:for-item="weekItem">
+          <block wx:for="{{weekItem.weeks}}" wx:key="{{key}}" wx:for-index="dayIdx" wx:for-item="dayItem  ">
+            <view class="days {{weekItem.month!==weekItem.weeks[dayIdx].month?'hidden':''}} {{weekItem.weeks[dayIdx].weekDay==0||weekItem.weeks[dayIdx].weekDay==6?'weekend':''}} {{weekItem.weeks[dayIdx].isToday?'today':''}} {{weekItem.weeks[dayIdx].isSelect?'select':''}}"  data-weekIdx="{{weekIdx}}" data-daysIdx="{{dayIdx}}" bindtap="selectDate">
+              <view class="date-inner">
+               {{weekItem.weeks[dayIdx].date}} 
+              </view>
+            </view>
+          </block>
+        </block>
+      </view>
+    </view>
+    <view class="taskList">
+        <!--正在进行的-->
+        <block wx:if="{{groupTask.curList.length>0}}">
+          <view class="current task-group">
+            <block wx:for="{{groupTask.curList}}" wx:key="key" wx:for-index="taskIdx" wx:for-item="taskItem">
+              <view data-status="current" data-key="{{taskItem.key}}" bindtap="selectTask" class="task-block {{taskIdx < groupTask.curList.length-1?'border-b':''}}">
+                <view class="end-time {{taskItem.endTimeMs*1>now?'dangerous:''}}">结束{{taskItem.endTime}}</view>
+                <view class="title">{{taskItem.title}}</view>
+                <view class="important {{taskItem.important==='一般'?'important_0':'important_1'}}">{{taskItem.important}}</view>
+              </view>
+            </block>
+          </view>
+        </block>
+        <!--未开始的-->
+        <block wx:if="{{groupTask.penList.length>0}}">
+          <view class="pending task-group">
+            <block wx:for="{{groupTask.penList}}" wx:key="key" wx:for-index="taskIdx" wx:for-item="taskItem">
+              <view data-status="pending" data-key="{{taskItem.key}}" bindtap="selectTask" class="task-block {{taskIdx < groupTask.penList.length-1?'border-b':''}}">
+                <view class="start-time">开始{{taskItem.startTime}}</view>
+                <view class="title">{{taskItem.title}}</view>
+                <view class="important {{taskItem.important==='一般'?'important_0':'important_1'}}">{{taskItem.important}}</view>
+              </view>
+            </block>
+          </view>
+        </block>
+        <!--已经结束的-->
+        <block wx:if="{{groupTask.finList.length>0}}">
+          <view class="finish task-group">
+              <block wx:for="{{groupTask.finList}}" wx:key="key" wx:for-index="taskIdx" wx:for-item="taskItem">
+                <view data-status="finish" data-key="taskItem.key" class="task-block {{taskIdx < groupTask.finList.length-1?'border-b':''}}">
+                  <view class="title">{{taskItem.title}}</view>
+                  <view class="important {{taskItem.important==='一般'?'important_0':'important_1'}}">{{taskItem.important}}</view>
+                </view>
+              </block>
+          </view>
+        </block>
+    </view>
   </view>
 </view>

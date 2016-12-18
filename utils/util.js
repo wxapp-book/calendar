@@ -46,7 +46,7 @@ calendar = {
         month:loopMoment.month(),
         weeks:weeks
       });
-      loopMoment.add(8,"day");
+      loopMoment.add(7,"day");
       if(loopMoment.isSame(monthEnd,'day')||loopMoment.isAfter(monthEnd)){
         process = false;
       }
@@ -91,8 +91,7 @@ calendar = {
         weekDay:loopMoment.weekday(),
         key:loopMoment.format('YYYY-MM-DD'),
         ms:loopMoment.valueOf(),
-        isToday:loopMoment.format('YYYY-MM-DD')===moment().format('YYYY-MM-DD'),
-        isSelect:loopMoment.format('YYYY-MM-DD')===moment().format('YYYY-MM-DD')
+        isSelect:idx===1?true:false
       });
       loopMoment.add(1,'day');
       idx++;
