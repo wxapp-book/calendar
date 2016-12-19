@@ -14,8 +14,11 @@ Page({
     });
   },
   selectTask:function(e){
+    //日程Key
     var key = e.currentTarget.dataset.key;
+    //日程的当前状态
     var status = e.currentTarget.dataset.status;
+    //未开始的日程：只展示修改按钮
     if(status === constant.taskStatus.pending){
       wx.showActionSheet({
         itemList:["修改"],
@@ -25,6 +28,7 @@ Page({
           }
         }
       });
+    //已开始的日程：展示修改和完成按钮
     }else if(status === constant.taskStatus.current){
       wx.showActionSheet({
         itemList:["修改","完成"],
@@ -103,19 +107,21 @@ _fn = {
       _fn.getCurPage().setData({
         groupTask:groupTask
       });
-      return groupTask;
     });
   },
   handleSelectTask:function(selectIdx,status,key){
+    //未开始的日程
     if(status === constant.taskStatus.pending){
-      if(selectIdx===0){
-        _fn.goUpdateTask(key);
+      if(selectIdx===0){//去日程详情页
+        _fn.goUpdaeTask(key);
       }
+    //未结束的日程
     }else if(status === constant.taskStatus.current){
-      if(selectIdx===0){
+      if(selectIdx===0){//去日程详情页
         _fn.goUpdateTask(key);
-      }else if(selectIdx===1){
+      }else if(selectIdx===1){//修改日程状态为完成
         var taskList = _fn.getCurPage().data.groupTask.curList;
+        //从groupTask对象中获取用户选定日程
         var task = taskList.filter(function(a){
           return a.key === key;
         })[0];

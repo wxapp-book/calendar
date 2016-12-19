@@ -22,41 +22,24 @@ function getPageData(){
   return us.last(getCurrentPages());
 }
 calendar = {
+  //获取月历对象的入口函数
   getCalendarData:function (calendarType,data){
     var now = data || moment();
     var calendarData;
-    if(calendarType === 'm'){
+    if(calendarType === 'm'){//获取一个月的月历
       calendarData = calendar.getMonthData(now);
-    }else if(calendarType === 'w'){
+    }else if(calendarType === 'w'){//获取一个星期的月历
       calendarData = calendar.getWeekData(now);
     }
-    console.log(calendarData);
     return calendarData;
   },
-  getMonthData:function(time){
-    var monthStart = moment(time).startOf('month');
-    var monthEnd = moment(time).endOf('month');
-    var loopMoment = monthStart;
-    var process = true;
-    var monthWeeks = [];
-    while(process){
-      var weeks = calendar.getWeekData(loopMoment);
-      monthWeeks.push({
-        key:loopMoment.format('YYYY-W'),
-        month:loopMoment.month(),
-        weeks:weeks
-      });
-      loopMoment.add(7,"day");
-      if(loopMoment.isSame(monthEnd,'day')||loopMoment.isAfter(monthEnd)){
-        process = false;
-      }
-    }
-    return monthWeeks;
-  },
+  //获取一个星期的月历
   getWeekData:function(time){
+    //周开始日期
     var weekStart = moment(time).startOf('week');
+    //周结束日期
     var weekEnd = moment(time).endOf('week');
-    var loopMoment = weekStart;
+    var loopMoment = weekStart;//基准日期
     var process = true;
     var weekDays = [];
     while(process){
@@ -70,6 +53,7 @@ calendar = {
         isToday:loopMoment.format('YYYY-MM-DD')===moment().format('YYYY-MM-DD'),
         isSelect:loopMoment.format('YYYY-MM-DD')===moment().format('YYYY-MM-DD')
       });
+      //如果基准日期等于或者超过周结束日期，则停止循环，否则加一天
       if(loopMoment.isSame(weekEnd,'day')||loopMoment.isAfter(weekEnd)){
         process=false;
       }else{
@@ -77,6 +61,31 @@ calendar = {
       }
     }
     return weekDays;
+  },
+  //获取一个月的月历
+  getMonthData:function(time){
+    //月开始日期
+    var monthStart = moment(time).startOf('month');
+    //月结束日期
+    var monthEnd = moment(time).endOf('month');
+    var loopMoment = monthStart;//基准日期
+    var process = true;
+    var monthWeeks = [];
+    while(process){
+      //获取一个星期的数据
+      var weeks = calendar.getWeekData(loopMoment);
+      monthWeeks.push({
+        key:loopMoment.format('YYYY-W'),
+        month:loopMoment.month(),
+        weeks:weeks
+      });
+      //将基准数据加七天，如果等于或者超过月结束日期，则停止循环
+      loopMoment.add(7,"day");
+      if(loopMoment.isSame(monthEnd,'day')||loopMoment.isAfter(monthEnd)){
+        process = false;
+      }
+    }
+    return monthWeeks;
   },
   getSevenDays:function(time){
     time = time || moment();

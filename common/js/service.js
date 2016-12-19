@@ -59,23 +59,26 @@ taskService = {
   },
   getDayTasks:function(option,callBack){
     var ms = option.ms;
-    var getTasks = function(date){
+    var getTasks = function(date){//根据日期对象中的taskKeys对象获取日程对象
       var taskKeyList = date.taskKeys||[];
       var taskList = [];
       for(var i = 0 ; i < taskKeyList.length ; i++){
         taskList.push(taskService.get({key:taskKeyList[i]}));
       }
-      callBack(taskList);
+      if(callBack && typeof callBack==='function'){
+      	callBack(taskList);
+      }else{
+      	return taskList
+      }
     };
-    if(callBack && typeof callBack==='function'){
-      dateService.get({ms:ms},function(result){
-        getTasks(result);
+    if(callBack && typeof callBack==='function'){//异步
+      dateService.get({ms:ms},function(result){//从storage中得到ms对应的日期对象
+        getTasks(result);//
       });
     }else{
-      var taskList = dateService.get();
-      getTasks(taskList);
+      var taskList = dateService.get();//同步
+      return getTasks(taskList);
     }
-
   },
   getTaskKey:function(ms){
     var taskKey = 'task_'+ms;
@@ -102,20 +105,20 @@ taskService = {
   filterTaskByStatus:function(taskList,status){
     var returnList = taskList;
     returnList =  taskList.filter(function(a){
-      var momentStart = moment(a.startTimeMs);
-      var momentEnd = moment(a.endTimeMs);
+      var momentStart = moment(a.startTimeMs);//日程开始时间的moment对象
+      var momentEnd = moment(a.endTimeMs);//日程结束时间的moment对象
       var now = moment();
       var taskStatus = a.status;
       if(constant.taskStatus.pending===status){
-        if(now.isBefore(momentStart)){
+        if(now.isBefore(momentStart)){//当前时间早于开始时间
           return true;
         }
       }else if(constant.taskStatus.current===status &&taskStatus !== constant.taskStatus.finish){
-        if(now.isAfter(momentStart)){
+        if(now.isAfter(momentStart)){//当前时间晚于开始时间，并且用户未标记日程结束
           return true;
         }
       }else if(constant.taskStatus.finish===status){
-        if(taskStatus === constant.taskStatus.finish){
+        if(taskStatus === constant.taskStatus.finish){//用户标记日程结束
           return true;
         }
       }
