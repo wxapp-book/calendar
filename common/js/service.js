@@ -8,8 +8,9 @@ dateService;
 
 taskService = {
   creat:function(task){
-    // wxService.clearStorage();
-    var ms = task.startTimeMs;
+    //第一部分：获取时间对象
+    var ms = task.startTimeMs;//日程开始时间的毫秒值
+    //读取该毫秒对应缓存的日期对象
     var date = dateService.get({ms:ms});
     var dateKey;
     if(!date){
@@ -18,14 +19,14 @@ taskService = {
     }else{
       dateKey = date.key;
     }
-
+    //第二部分：保存日程对象
     var taskKey = taskService.getTaskKey(moment().valueOf());
     task.key = taskKey;
     wxService.setStorage({
       key:taskKey,
       val:task
     });
-
+    //第三个部分：向日期对象添加日程对象
     date.taskKeys = date.taskKeys || [];
     date.taskKeys.push(taskKey);
     dateService.update({

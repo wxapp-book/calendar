@@ -1,49 +1,55 @@
 <view class="daytask page">
   <view class="header border-t border-b">
-  	<!-- <view class="header-left header-btn" bindtap="cancelTask"></view> -->
-	<view class="header-center header-btn">
-		<view class="calendar-wrapper">
-			<view class="calendar">
-		  		<block wx:for="{{calendar}}" wx:key="{{key}}" wx:for-index="calIdx" wx:for-item="calItem">
-		  			<view class="cal-itme {{calItem.isSelect?'select':''}}" data-ms="{{calItem.ms}}" bindtap="chooseDate">{{calItem.date}}</view>
-		  		</block>
-		  	</view>
-		</view>
-	</view>
-	<view class="header-right plus" bindtap="addTask"></view>
+    <!-- <view class="header-left header-btn" bindtap="cancelTask"></view> -->
+  <view class="header-center header-btn">
+    <view class="calendar-wrapper">
+      <view class="header-title"></view>
+      <view class="calendar">
+          <block wx:for="{{calendar}}" wx:key="{{key}}" wx:for-index="calIdx" wx:for-item="calItem">
+            <view class="cal-itme {{calItem.isSelect?'select':''}}" data-ms="{{calItem.ms}}" bindtap="chooseDate">{{calItem.date}}</view>
+          </block>
+        </view>
+    </view>
+  </view>
+  <view class="header-right plus" bindtap="addTask"></view>
   </view>
   <view class="daytask_body">
-  	<view class="dayTask-table">
-  		<view class="time-line">
-  			<block wx:for="{{timeLine}}" wx:for-item="timeline">
-  				<view class='timeline-block taskTable-block'>
-  					{{timeline}}:00
-  				</view>
-  			</block>
-  		</view>
-  		<view class="dayTaskWrapper">
-  			<block wx:for="{{grid}}" wx:for-item="gridItem" wx:for-index="gridIdx">
-  				<view class="task-column">
-	  				<block wx:for="{{gridItem}}" wx:for-index="blockIdx">
-	  					<view class="task-block taskTable-block" bindtap="chooseTime">
-	  						<block wx:if="{{gridItem[blockIdx]!=0}}">
-	  							<view data-taskKey="{{gridItem[blockIdx].task.key}}" class="task {{gridItem[blockIdx].startPer?'start':''}} {{gridItem[blockIdx].endPer?'end':''}} {{gridItem[blockIdx].task.important==='一般'?'important_1':'important_2'}} {{gridItem[blockIdx].task.status}}" style="height:{{gridItem[blockIdx].startPer||gridItem[blockIdx].endPer||gridItem[blockIdx].middlePer}};margin-top:{{gridItem[blockIdx].startPos}}"></view>
-	  						</block>
-	  					</view>
-	  				</block>
-  				</view>
-  			</block>
-  		</view>
-  	</view>
+    <view class="dayTask-table">
+      <view class="time-line">
+        <block wx:for="{{timeLine}}" wx:for-item="timeline">
+          <view class='timeline-block taskTable-block'>
+            {{timeline}}:00
+          </view>
+        </block>
+      </view>
+      <view class="dayTaskWrapper">
+        <block wx:for="{{grid}}" wx:for-item="gridItem" wx:for-index="gridIdx">
+          <view class="task-column">
+            <block wx:for="{{gridItem}}" wx:for-index="blockIdx">
+              <view class="task-block taskTable-block" bindtap="chooseTime">
+                <block wx:if="{{gridItem[blockIdx]!=0}}">
+                  <view data-taskKey="{{gridItem[blockIdx].task.key}}" class="task {{gridItem[blockIdx].startPer?'start':''}} {{gridItem[blockIdx].endPer?'end':''}} {{gridItem[blockIdx].task.important==='一般'?'important_1':'important_2'}} {{gridItem[blockIdx].task.status}}" style="height:{{gridItem[blockIdx].startPer||gridItem[blockIdx].endPer||gridItem[blockIdx].middlePer}};margin-top:{{gridItem[blockIdx].startPos}}">
+                      <view class="line"></view>
+                      <block wx:if="{{gridItem[blockIdx].startPer||gridItem[blockIdx].middlePer}}">
+                        <view class="task-block-title">{{gridItem[blockIdx].task.title}}</view>
+                      </block>
+                  </view>
+                </block>
+              </view>
+            </block>
+          </view>
+        </block>
+      </view>
+    </view>
   </view>
   <view class="taskDetail {{detailPop}}">
-  	<view class="taskDetailWrapper">
-	  	<view class="title">标题 : {{selectTask.title}}</view>
-	  	<view class="start-time">开始 : {{selectTask.date}} {{selectTask.startTime}}</view>
-	  	<view class="end-time">结束 : {{selectTask.date}} {{selectTask.endTime}}</view>
-	  	<view class="important">重要 : {{selectTask.important}}</view>
-	  	<view class="updateBtn btn" bindtap="goUpdataTask" data-taskKey="{{selectTask.key}}">修改</view>
-	  	<view class="finishBtn btn {{selectTask.curStatus}}" bindtap="finishTask" data-taskKey="{{selectTask.key}}">完成</view>
-  	</view>
+    <view class="taskDetailWrapper">
+      <view class="title">标题 : {{selectTask.title}}</view>
+      <view class="start-time">开始 : {{selectTask.date}} {{selectTask.startTime}}</view>
+      <view class="end-time">结束 : {{selectTask.date}} {{selectTask.endTime}}</view>
+      <view class="important">重要 : {{selectTask.important}}</view>
+      <view class="updateBtn btn" bindtap="goUpdataTask" data-taskKey="{{selectTask.key}}">修改</view>
+      <view class="finishBtn btn {{selectTask.curStatus}}" bindtap="finishTask" data-taskKey="{{selectTask.key}}">完成</view>
+    </view>
   </view>
 </view>

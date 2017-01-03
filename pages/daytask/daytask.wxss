@@ -29,6 +29,8 @@
 }
 .daytask .daytask_body{
 	padding-top:100rpx;
+	padding-right:20rpx;
+	padding-left:20rpx;
 }
 .daytask .dayTaskWrapper{
 	display:flex;
@@ -37,7 +39,7 @@
 }
 .daytask .task-block{
 	display:flex;
-	border-top:1px #A82f5a solid;
+	border-top:1px #f9f9f9 solid;
 }
 .daytask .task-block .task.start{
 	height:100%;
@@ -46,6 +48,17 @@
 .daytask .task-block .task{
 	height:100%;
 	width:100%;
+	position: relative;
+}
+.daytask .task-block .task .line{
+	height:100%;
+	width:3%;
+}
+.daytask .task-block .important_1 .line{
+	background-color:#1e8fe1;
+}
+.daytask .task-block .important_2 .line{
+	background-color:#ff3367;
 }
 .daytask .task-column{
 	flex-grow:1;
@@ -54,11 +67,11 @@
 }
 .daytask .task-block .important_2{
 	border-left: 1px solid white;
-	background-color:#F45c93;
+	background-color:rgba(255,51,103,0.6);
 }
 .daytask .task-block .important_1{
 	border-left: 1px solid white;
-	background-color:#2DB3A0;
+	background-color:rgba(30,143,225,0.6);
 }
 .daytask .calendar{
 	display:flex;
@@ -72,9 +85,10 @@
 	height:70rpx;
 	line-height:70rpx;
 	text-align:center;
+	color:white;
 }
 .daytask .calendar .cal-itme.select{
-	background-color: #A82f5a;
+	background-color: #ff3366;
 	color:white;
 }
 .taskDetail{
@@ -134,4 +148,17 @@
 }
 .daytask .header-center{
 	width:650rpx;
+}
+.daytask .calendar-wrapper{
+	background-color: #2d2f3c;
+
+}
+.daytask .time-line{
+	padding-left:15rpx;
+}
+.daytask .task-block-title{
+	position: absolute;
+	top:3px;
+	left:5.5%;
+	font-size:13px;
 }
