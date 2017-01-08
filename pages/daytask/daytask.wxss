@@ -1,7 +1,7 @@
 @import "../../common/css/common.wxss";
 .daytask .header{
 	justify-content: space-between;
-	height:88rpx;
+	/*height:88rpx;*/
 	align-items: center;
 	background-color:white;
 }
@@ -28,7 +28,7 @@
 	margin-right:20rpx;
 }
 .daytask .daytask_body{
-	padding-top:100rpx;
+	padding-top:150rpx;
 	padding-right:20rpx;
 	padding-left:20rpx;
 }
@@ -73,19 +73,29 @@
 	border-left: 1px solid white;
 	background-color:rgba(30,143,225,0.6);
 }
+.daytask .calendar-wrapper{
+	background-color: #2d2f3c;
+	padding-left:10rpx;
+	padding-right:10rpx;
+	padding-top:10rpx;
+	padding-bottom:10rpx;
+}
 .daytask .calendar{
 	display:flex;
 	justify-content:space-between;
 	width:100%;
+	background-color: #2d2f3c;
 }
-.daytask .calendar .cal-itme{
-	margin-left:20rpx;
+.daytask .header .cal-itme{
+	margin-left:15rpx;
+	margin-right:15rpx;
 	border-radius:50%;
-	width: 70rpx;
-	height:70rpx;
-	line-height:70rpx;
+	width: 40rpx;
+	height:40rpx;
+	line-height:40rpx;
 	text-align:center;
 	color:white;
+	margin-bottom: 10rpx;
 }
 .daytask .calendar .cal-itme.select{
 	background-color: #ff3366;
@@ -94,9 +104,9 @@
 .taskDetail{
 	position:fixed;
 	height:400rpx;
-	width:710rpx;
-	padding:20rpx;
-	background-color: #f0f0f0;
+	width:670rpx;
+	padding:0 40rpx 20rpx 40rpx;
+	background-color: white;
 	border-radius:20rpx 20rpx 0 0;
 	display: none;
 	opacity: 0.95
@@ -106,21 +116,23 @@
 	display:flex;
 	flex-direction: column;
 	justify-content: space-between;
-	width:710rpx;
+	width:670rpx;
 	height:400rpx;
 }
 .taskDetail .btn{
-	height : 60rpx;
-	line-height: 60rpx;
-	border: 1px solid #2DB3A0;
+	height : 70rpx;
+	line-height: 70rpx;
 	text-align:center;
-	width:100%;
+	width:48%;
+	color:white;
+	border-radius: 3px
 }
 .taskDetail .updateBtn{
 	/*align-self:center;*/
-
+	background-color:#1e8fe1;
 }
 .taskDetail .finishBtn{
+	background-color:#2d2f3c;
 	/*align-self:center;*/
 }
 .taskDetail .finishBtn.pending,
@@ -147,10 +159,10 @@
 	to{bottom:-410rpx;}
 }
 .daytask .header-center{
-	width:650rpx;
+	width:100%
 }
 .daytask .calendar-wrapper{
-	background-color: #2d2f3c;
+	
 
 }
 .daytask .time-line{
@@ -161,4 +173,48 @@
 	top:3px;
 	left:5.5%;
 	font-size:13px;
+}
+.daytask .header-title{
+	display :flex;
+	justify-content: space-between;
+	height:30px;
+	line-height:30px;
+	align-items:center;
+}
+.daytask .week{
+	display:flex;
+	justify-content: space-between;
+	/*margin-top:10rpx;*/
+}
+.daytask .week .weekend{
+	color:#ff3366;
+
+}
+.daytask .task-detail-wrapper{
+	background-color:rgba(0,0,0,0.45);
+	position: fixed;
+	width:100%;
+	height:100%;
+	top:0px;
+	display:none;
+}
+.daytask .task-detail-wrapper.show{
+	display:block;
+}
+.daytask .title{
+	font-weight:bolder;
+	line-height:50px;
+	border-bottom:1px solid #f0f0f0;
+}
+.daytask .btn-wrapper{
+	display:flex;
+	justify-content: space-between;
+}
+.daytask .start-time,
+.daytask .end-time,
+.daytask .important{
+	color:#afb0b4
+}
+.daytask .header-title .left{
+	width:40rpx;
 }

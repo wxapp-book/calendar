@@ -3,10 +3,12 @@
 .create .header{
 	justify-content: space-between;
 	height:44px;
+	box-shadow:1px 1px 1px #aaa;
 }
 .create .create_body{
 	margin-top:44px;
-	padding-top:1px;
+	font-size:15px;
+	/*padding-top:1px;*/
 }
 .create .create_body .block{
 	margin-top:30px;
@@ -15,8 +17,8 @@
 .create .create_body .block_line{
 	display:flex;
 	background-color:white;
-	margin-left:20px;
-	padding:5px 0px;
+	/*margin-left:20px;*/
+	padding:5px 10px;
 	align-items: center;
 	justify-content: space-between;
 	min-height: 30px;
@@ -34,17 +36,29 @@
 .create .header-left{
 	font-size:16px;
 	padding-left:10px;
-	color:#A82f5a;
+	color:#ff688b;
 }
 .create .header-right{
 	font-size:16px;
 	font-weight: bolder;
 	padding-right:10px;
-	color:#2DB3A0;
+	color:#50a7e7;
 }
 .create .header-right.inActive{
 	color:#f0f0f0;
 }
 .create .textarea{
 	height:60px;
+}
+.create .delete-btn{
+	width: 95%;
+	text-align: center;
+	margin:auto;
+	height:35px;
+	line-height:35px;
+	background-color:#ff688b;
+	margin-top:20px;
+	color:white;
+	border-radius: 3px
+
 }

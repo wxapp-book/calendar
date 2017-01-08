@@ -68,6 +68,9 @@ Page({
       val:task
     });
     _fn.init();
+  },
+  hideDetailPop:function(e){
+    _fn.hideDetailPop();
   }
 });
 _fn = {
@@ -189,7 +192,8 @@ _fn = {
   var firstDay = moment(_fn.getCurPage().data.curDate);
   var sevenDays = calendar.getSevenDays(firstDay);
   _fn.getCurPage().setData({
-    calendar : sevenDays
+    calendar : sevenDays,
+    days:constant.calendar.dayShort
   });
   }
 

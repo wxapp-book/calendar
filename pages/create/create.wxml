@@ -44,5 +44,9 @@
 				</picker>
 			</view>
 		</view>
+		<block wx:if="{{pageType=='update'}}" >
+			<view class="delete-btn" bindtap="removeTask">删除日程</view>
+		</block>
+
 	</view>
 </view>

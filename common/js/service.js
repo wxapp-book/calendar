@@ -56,6 +56,25 @@ taskService = {
         val:val
       });
     }
+  },
+  delete:function(option,callBack){
+    var dayMs = option.dayMs;
+    var taskKey = option.taskKey;
+    dateService.get({key:dayMs},function(dateObj){
+      var taskList = dateObj.taskKeys;
+      taskList = taskList.filter(function(a){
+        return a !== taskKey;
+      });
+      dateObj.taskKeys = taskList;
+      dateService.update({
+        key:dayMs,
+        val:dateObj
+      },function(){
+        console.log(dateService.get({key:dayMs}));
+        callBack();
+      });
+    });
+
 
   },
   getDayTasks:function(option,callBack){
@@ -69,7 +88,7 @@ taskService = {
       if(callBack && typeof callBack==='function'){
       	callBack(taskList);
       }else{
-      	return taskList
+      	return taskList;
       }
     };
     if(callBack && typeof callBack==='function'){//异步
