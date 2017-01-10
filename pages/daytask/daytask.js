@@ -14,7 +14,7 @@ Page({
         url:'../create/create?pageType=create&ms='+ms
       });
   },
-  chooseTime:function(e){
+  chooseTask:function(e){
     var key = e.target.dataset.taskkey;
     if(!key){
       _fn.hideDetailPop();
@@ -35,6 +35,7 @@ Page({
     var ms = e.currentTarget.dataset.ms;
     _fn.getCurPage().data.curDate = moment(ms,'x');
     var calendar = _fn.getCurPage().data.calendar;
+    //高亮被选中日期
     for(var i = 0 ; i < calendar.length ; i++){
       if(calendar[i].ms === ms*1){
         calendar[i].isSelect = true;
@@ -43,6 +44,7 @@ Page({
       }
     }
     _fn.getCurPage().setData({calendar:calendar});
+    //重新获取日程数据
     _fn.init();
   },
   onShow:function(){

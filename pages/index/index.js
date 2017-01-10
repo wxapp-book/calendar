@@ -125,11 +125,13 @@ _fn = {
         var task = taskList.filter(function(a){
           return a.key === key;
         })[0];
-        task.status='finish';
+        task.status='finish';//修改状态
+        //更新storage
         taskService.update({
           key:key,
           val:task
         });
+        //重新读取当天的日程数据
         _fn.init();
       }
    }

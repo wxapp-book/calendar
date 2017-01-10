@@ -25,7 +25,7 @@
   			<block wx:for="{{grid}}" wx:for-item="gridItem" wx:for-index="gridIdx">
   				<view class="task-column">
 	  				<block wx:for="{{gridItem}}" wx:for-index="blockIdx">
-	  					<view class="task-block taskTable-block" bindtap="chooseTime">
+	  					<view class="task-block taskTable-block" bindtap="chooseTask">
 	  						<block wx:if="{{gridItem[blockIdx]!=0}}">
 	  							<view data-taskKey="{{gridItem[blockIdx].task.key}}" class="task {{gridItem[blockIdx].startPer?'start':''}} {{gridItem[blockIdx].endPer?'end':''}} {{gridItem[blockIdx].task.important==='一般'?'important_1':'important_2'}} {{gridItem[blockIdx].task.status}}" style="height:{{gridItem[blockIdx].startPer||gridItem[blockIdx].endPer||gridItem[blockIdx].middlePer}};margin-top:{{gridItem[blockIdx].startPos}}"></view>
 	  						</block>
