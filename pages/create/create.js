@@ -2,6 +2,7 @@
 
 var _fn,
   taskService = require('../../common/js/service').taskService,
+  dateService = require('../../common/js/service').dateService,
   moment = require('../../lib/moment'),
   us = require('../../lib/underscore'),
   utils = require('../../utils/util'),
@@ -102,6 +103,18 @@ Page({
   cancelTask:function(e){
     wx.navigateBack({
       delta:1
+    });
+  },
+  removeTask:function(){
+    var task = _fn.getCurTask();
+    var dayMs = dateService.getDateKey(moment(task.date).valueOf());
+    taskService.delete({
+      dayMs:dayMs,
+      taskKey:task.key
+    },function(){
+      wx.navigateBack({
+        delta:1
+      });
     });
   }
 });

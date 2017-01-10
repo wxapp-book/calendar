@@ -2,7 +2,7 @@
 @import "../../common/css/common.wxss";
 .index .header{
 	justify-content: space-between;
-	height:44px;
+	/*height:44px;*/
 	align-items: center;
 	background-color:white;
 }
@@ -20,24 +20,36 @@
 	margin-right:10px;
 }
 .index .index_body{
-	padding-top:44px;
+	/*padding-top:44px;*/
 }
 .index .task-block{
 	display:flex;
 	align-items: center;
-	height:35px;
+	height:45px;
 	background-color: white;
 	justify-content: space-between;
 }
 .index .task-group{
 	border:1px solid #ddd;
-	margin:10px 10px;
+	margin:10px 0px;
 	box-shadow: 2px 2px #f0f0f0;
-	padding:0px 5px;
+	/*padding:0px 5px;*/
 }
 .index .current.task-group,
 .index .current .task-block{
-	border-color: #2DB3A0;
+	/*border-color: #2DB3A0;*/
+}
+.index .current .task-block:before{
+	content:"";
+	width:3px;
+	height:100%;
+	background-color: #ff2e62;
+}
+.index .pending .task-block:before{
+	content:"";
+	width:3px;
+	height:100%;
+	background-color: #168ae0;
 }
 .index .finish{
 	color:#7c7e80;
@@ -65,7 +77,9 @@
 }
 .index .calendar .date .days.hidden{
 	font-size:0px;
-
+}
+.index .calendar .date .hidden.select .date-inner{
+	border:none;
 }
 .index .calendar .days.weekend{
 	color:#F45c93;
@@ -82,31 +96,33 @@
 }
 .index .calendar .days.select .date-inner{
 	border:2px solid #F45c93;
-	border-radius:10px;
+	border-radius:50%;
 }
 .index .calendar .days.today.select .date-inner{
 	background-color:#F45c93;
 	color:white;
 }
 .index .calendar .days .date-inner{
-	height: 38px;
-	line-height: 38px;
-	width:96rpx;
+	height: 30px;
+	line-height: 30px;
+	width:30px;
 	margin: auto;
 }
 .index .todayWrapper{
 	display:flex;
 	padding: 30rpx;
-	border:1px solid  #2DB3A0;
-	border-radius:4px;
-	margin:10px 10px;
+	/*border:1px solid  #2DB3A0;*/
+	/*border-radius:4px;*/
+	/*margin:10px 10px;*/
 	justify-content: space-between;
+	background-color: #2d2f3c
 
 }
 .index .todayWrapper .date{
-	font-size: 40px;
+	font-size: 46px;
 	font-weight:bolder;
 	color:#F45c93;
+	line-height:46px;
 
 }
 .index .todayWrapper .left{
@@ -116,7 +132,10 @@
 	display:flex;
 	flex-direction: column;
 	padding-left: 40rpx;
-	justify-content:center;
+	justify-content:flex-end;
+	color:white;
+	font-size:13px;
+
 
 }
 .index .todayWrapper .weekDay{
@@ -126,6 +145,21 @@
 
 }
 .index .goDayTaskBtn{
-	font-size : 13px;
+	font-size : 16px;
+	color:#F45c93;
+}
+.index .task-info{
+	width:100%;
+	display:flex;
+	justify-content: space-between;
+	padding:0 10px;
+}
+.index .finish .task-block{
+	background-color:#fafafa;
+}
+.index .create-task{
+	text-align:right;
+	padding-right: 10px;
+	font-size:16px;
 	color:#F45c93;
 }

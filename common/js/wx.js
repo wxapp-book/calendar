@@ -23,6 +23,25 @@ var handle = {
       }
     }
   },
+  removeStorage:function(option,complete){
+    var key = option.key;
+    if(complete && typeof complete === 'function'){//异步
+       wx.removeStorage({
+        key:key,
+        complete:function(data){
+          if(us.isFunction(complete)){
+            complete(data);
+          }
+        }
+      });
+    }else{//同步
+      try{
+        return wx.removeStorageSync(key);
+      }catch(e){
+        console.error(e);
+      }
+    }
+  },
   getStorage:function(option,complete){
     var key = option.key;
     if(complete && typeof complete === 'function'){//异步
