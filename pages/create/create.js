@@ -74,7 +74,7 @@ Page({
     var value = e.detail.value;
     if(value === true){
       task.startTime = "00:00";
-      task.endTime = "24:59";
+      task.endTime = "23:59";
     }else{
       task.startTime = null;
       task.endTime = null;
@@ -132,6 +132,7 @@ _fn = {
     var startTime = curTask.startTime?curTask.startTime:now.format("HH:mm");
     var startTimeMoment = moment(dateStr+" "+startTime);
     var endTimeMoment;
+    var endTime;
     if(curTask.endTime){
       endTimeMoment = moment(dateStr+" "+curTask.endTime);
       if(!endTimeMoment.isAfter(startTimeMoment)){

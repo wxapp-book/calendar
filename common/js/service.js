@@ -6,7 +6,7 @@ taskService,
 dateService;
 
 
-taskService = {
+var taskService = {
   creat:function(task){
     //第一部分：获取时间对象
     var ms = task.startTimeMs;//日程开始时间的毫秒值
@@ -107,18 +107,18 @@ taskService = {
   orderTaskByStartTime:function(taskList,orderType){
     return taskList.sort(function(a,b){
       if(orderType === constant.orderType.asc){
-        return a.startTimeMs<b.startTimeMs;
+        return a.startTimeMs-b.startTimeMs;
       }else{
-        return a.startTimeMs>b.startTimeMs;
+        return b.startTimeMs-a.startTimeMs;
       }
     });
   },
   orderTaskByEndTime:function(taskList,orderType){
     return taskList.sort(function(a,b){
       if(orderType === constant.orderType.asc){
-        return a.endTimeMs<b.endTimeMs;
+        return a.endTimeMs-b.endTimeMs;
       }else{
-        return a.endTimeMs>b.endTimeMs;
+        return b.endTimeMs-a.endTimeMs;
       }
     });
   },
@@ -189,7 +189,6 @@ dateService = {
   },
   get:function(option,callBack){
     var key = option.key||dateService.getDateKey(option.ms);
-    console.log(key);
     if(callBack && typeof callBack==='function'){
       wxService.getStorage({key:key},function(result){
         if(result.errMsg==='getStorage:ok'){
@@ -225,10 +224,10 @@ dateService = {
     return dateKey;
   }
 };
-_fn = {
+var _fn = {
 
 };
-service = {
+var service = {
   taskService:taskService,
   dateService:dateService
 };

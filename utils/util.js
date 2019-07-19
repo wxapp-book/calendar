@@ -21,7 +21,7 @@ function formatNumber(n) {
 function getPageData(){
   return us.last(getCurrentPages());
 }
-calendar = {
+var calendar = {
   //获取月历对象的入口函数
   getCalendarData:function (calendarType,data){
     var now = data || moment();
@@ -91,7 +91,7 @@ calendar = {
     time = time || moment();
     var idx = 1;
     var showDays = [];
-    var loopMoment = time;
+    var loopMoment = moment(time).startOf("week");
     while(idx<=7){
       showDays.push({
         year:loopMoment.year(),
@@ -100,7 +100,7 @@ calendar = {
         weekDay:loopMoment.weekday(),
         key:loopMoment.format('YYYY-MM-DD'),
         ms:loopMoment.valueOf(),
-        isSelect:idx===1?true:false
+        isSelect:loopMoment.isSame(time,"day")
       });
       loopMoment.add(1,'day');
       idx++;
