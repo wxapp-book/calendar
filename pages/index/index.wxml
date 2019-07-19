@@ -48,7 +48,7 @@
             <block wx:for="{{groupTask.curList}}" wx:key="key" wx:for-index="taskIdx" wx:for-item="taskItem">
               <view data-status="current" data-key="{{taskItem.key}}" bindtap="selectTask" class="task-block {{taskIdx < groupTask.curList.length-1?'border-b':''}}">
                 <view class="task-info">
-                  <view class="end-time {{taskItem.endTimeMs*1>now?'dangerous:''}}">结束{{taskItem.endTime}}</view>
+                  <view class="end-time {{taskItem.endTimeMs*1<now?'dangerous':''}}">结束{{taskItem.endTime}}</view>
                   <view class="title">{{taskItem.title}}</view>
                   <view class="important {{taskItem.important==='一般'?'important_0':'important_1'}}">{{taskItem.important}}</view>
                 </view>

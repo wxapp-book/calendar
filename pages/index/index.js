@@ -10,7 +10,7 @@ Page({
   },
   addTask:function(e){
     wx.navigateTo({//youbug
-      url:'../create/create?pageType=create'
+      url:'../create/create?pageType=create&ms='+_fn.getCurPage().data.selectDate.ms
     });
   },
   selectTask:function(e){
@@ -51,6 +51,7 @@ Page({
         if(i===weekIdx && j===daysIdx){
           c_date.isSelect=true;
           this.setData({selectDate:c_date});
+          _fn.init();
         }else{
           c_date.isSelect=false;
         }
@@ -81,7 +82,7 @@ Page({
 });
 
 
-_fn = {
+var _fn = {
   init:function(){
     _fn.groupTask();
   },
@@ -89,7 +90,7 @@ _fn = {
     return us.last(getCurrentPages());
   },
   groupTask:function(){
-    var ms = new Date().getTime();
+    var ms =_fn.getCurPage().data.selectDate.ms || new Date().getTime();
     taskService.getDayTasks({ms:ms},function(taskList){
       var penList = taskService.filterTaskByStatus(taskList,constant.taskStatus.pending);
       var curList = taskService.filterTaskByStatus(taskList,constant.taskStatus.current);
@@ -113,7 +114,7 @@ _fn = {
     //未开始的日程
     if(status === constant.taskStatus.pending){
       if(selectIdx===0){//去日程详情页
-        _fn.goUpdaeTask(key);
+        _fn.goUpdateTask(key);
       }
     //未结束的日程
     }else if(status === constant.taskStatus.current){

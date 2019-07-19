@@ -28,22 +28,22 @@
   <view class="daytask_body">
     <view class="dayTask-table">
       <view class="time-line">
-        <block wx:for="{{timeLine}}" wx:for-item="timeline">
+        <block wx:for="{{timeLine}}" wx:key="index" wx:for-item="timeline">
           <view class='timeline-block taskTable-block'>
             {{timeline}}:00
           </view>
         </block>
       </view>
       <view class="dayTaskWrapper">
-        <block wx:for="{{grid}}" wx:for-item="gridItem" wx:for-index="gridIdx">
+        <block wx:for="{{grid}}" wx:key="index" wx:for-item="gridItem" wx:for-index="gridIdx">
           <view class="task-column">
             <block wx:for="{{gridItem}}" wx:for-index="blockIdx">
-              <view class="task-block taskTable-block" bindtap="chooseTime">
+              <view class="task-block taskTable-block {{(gridItem[blockIdx]!=0 && !(gridItem[blockIdx].startPer || gridItem[blockIdx].middlePer))?'no-border':''}} {{gridItem[blockIdx]!=0?(gridItem[blockIdx].task.important==='一般'?'important_1':'important_2'):''}}" bindtap="chooseTime">
                 <block wx:if="{{gridItem[blockIdx]!=0}}">
                   <view data-taskKey="{{gridItem[blockIdx].task.key}}" class="task {{gridItem[blockIdx].startPer?'start':''}} {{gridItem[blockIdx].endPer?'end':''}} {{gridItem[blockIdx].task.important==='一般'?'important_1':'important_2'}} {{gridItem[blockIdx].task.status}}" style="height:{{gridItem[blockIdx].startPer||gridItem[blockIdx].endPer||gridItem[blockIdx].middlePer}};margin-top:{{gridItem[blockIdx].startPos}}">
                       <view class="line"></view>
                       <block wx:if="{{gridItem[blockIdx].startPer||gridItem[blockIdx].middlePer}}">
-                        <view class="task-block-title">{{gridItem[blockIdx].task.title}}</view>
+                        <view class="task-block-title" data-taskKey="{{gridItem[blockIdx].task.key}}" bindtap="chooseTime">{{gridItem[blockIdx].task.title}}</view>
                       </block>
                   </view>
                 </block>

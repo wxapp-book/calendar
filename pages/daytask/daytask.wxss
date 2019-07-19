@@ -11,6 +11,12 @@
 .daytask .taskTable-block{
 	height:100rpx;
 }
+.daytask .taskTable-block.no-border.important_1{
+	border-top:1px rgba(30,143,225,0.6) solid;
+}
+.daytask .taskTable-block.no-border.important_2{
+	border-top:1px rgba(255,51,103,0.6) solid;
+}
 .daytask .timeline-block{
 	border-top:1px solid transparent;
 }
@@ -28,14 +34,14 @@
 	margin-right:20rpx;
 }
 .daytask .daytask_body{
-	padding-top:150rpx;
+	padding-top:220rpx;
 	padding-right:20rpx;
 	padding-left:20rpx;
 }
 .daytask .dayTaskWrapper{
 	display:flex;
 	flex-grow: 1;
-	padding-top: 20rpx;
+	padding-top: 10rpx;
 }
 .daytask .task-block{
 	display:flex;
@@ -173,6 +179,7 @@
 	top:3px;
 	left:5.5%;
 	font-size:13px;
+  z-index: 2;
 }
 .daytask .header-title{
 	display :flex;
